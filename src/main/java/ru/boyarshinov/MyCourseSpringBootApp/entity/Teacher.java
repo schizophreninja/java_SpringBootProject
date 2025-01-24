@@ -35,7 +35,4 @@ public class Teacher {
     @Column(name="salary")
     private int salary;
 
-    @Column(name="lessonid")
-    private int lessonId;
-    //private String lessonName = LessonRepository.findById(lessonId);
 }

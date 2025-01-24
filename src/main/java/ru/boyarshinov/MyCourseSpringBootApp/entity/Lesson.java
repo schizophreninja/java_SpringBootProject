@@ -23,6 +23,4 @@ public class Lesson {
     @Column(name="name")
     private String name;
 
-    @Column(name="teacherid")
-    private int teacherId;
 }

@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org"
+>
+<head>
+    <meta charset="UTF-8">
+    <title>Registration and Login System</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
+          rel="stylesheet"
+          integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
+          crossorigin="anonymous">
+    <style>
+        .nav-link {
+            text-decoration: underline 1px solid;
+        }
+    </style>
+</head>
+<body>
+<header>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container-fluid">
+            <a class="navbar-brand" th:href="@{/index}"><b>Study Management System</b></a>
+
+            <div class="collapse navbar-collapse d-flex justify-content-end fs-4" id="navbarSupportedContent">
+                <ul class="navbar-nav mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" th:href="@{/listTeachers}">Teachers</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" th:href="@{/listLessons}">Lessons</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" th:href="@{/about}">About</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" th:href="@{/calcAvgTeacherSalary}">SalaryCalculator</a>
+                    </li>
+                    <li class="nav-item" th:if="${#authorization.expression('hasRole(''ADMIN'')')}">
+                        <a class="nav-link active" aria-current="page" th:href="@{/users}">Users</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" th:href="@{/logout}">Logout</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+</header>
+<div class="container">
+    <div class="row col-md-10 mt-5 fs-4">
+        <p><span>Hello, <b th:text="${currentUser.firstName}"></b>! Your account info:</span></p>
+        <p>First Name: <b th:text="${currentUser.firstName}"></b></p>
+        <p>Last Name: <b th:text="${currentUser.lastName}"></b></p>
+        <p>E-mail: <b th:text="${currentUser.email}"></b></p>
+        <p>Role: <b th:text="${currentUser.roleName}"></b></p>
+    </div>
+</div>
+</body>
+</html>
